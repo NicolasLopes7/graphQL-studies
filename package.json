@@ -4,8 +4,14 @@
   "main": "index.js",
   "author": "Nicolas Lopes Aquino <nicolaslopesbusiness@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon ./src/index.js"
+  },
   "dependencies": {
     "apollo-server": "^2.14.1",
     "graphql": "^15.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
