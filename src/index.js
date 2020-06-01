@@ -18,20 +18,38 @@ const typeDefs = gql`
   type Query {
     hello: String
     users: [User!]!
+    getUserByEmail(email: String!): User!
   }
 `;
+
+const users = [
+  {
+    _id: String(Math.random()),
+    name: "Nicolas",
+    email: "nicolaslopesaquino@gmail.com",
+    active: true,
+  },
+  {
+    _id: String(Math.random()),
+    name: "Nicolas 2",
+    email: "nicolaslopesaquino2@gmail.com",
+    active: true,
+  },
+  {
+    _id: String(Math.random()),
+    name: "Nicolas 3",
+    email: "nicolaslopesaquino3@gmail.com",
+    active: true,
+  },
+];
 
 const resolvers = {
   Query: {
     hello: () => "Hello World",
-    users: () => [
-      {
-        _id: String(Math.random()),
-        name: "Nicolas",
-        email: "nicolaslopesaquino@gmail.com",
-        active: true,
-      },
-    ],
+    users: () => users,
+    getUserByEmail: (_, args) => {
+      return users.find((user) => user.email === args.email);
+    },
   },
 };
 
